@@ -1,4 +1,5 @@
-require 'card.rb'
+require 'card'
+require 'spec_helper'
 
 class Deck
   attr_accessor :cards

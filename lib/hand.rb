@@ -1,4 +1,5 @@
 require 'deck'
+require 'spec_helper'
 
 class Hand
   HAND_VALUES = {
@@ -45,22 +46,27 @@ class Hand
     elsif value_hash.values.include?(3) && value_hash.values.include?(2)
       hand_type = :full_house
     elsif value_hash.values.include?(3)
-      hand_type = :three_of_a_king
+      hand_type = :three_of_a_kind
     elsif value_hash.values.select {|el| el == 2}.count == 2
       hand_type = :two_pair
     elsif value_hash.values.include?(2)
       hand_type = :pair
-    end
 
-    if suit_hash.values.include?(5) # && a straigh
+    elsif suit_hash.values.include?(5) && consecutive_values?(value_hash.keys)
       hand_type = :straight_flush
     elsif suit_hash.values.include?(5)
       hand_type = :flush
-    # elsif - a straight
-
+    elsif consecutive_values?(value_hash.keys)
+      hand_type = :straight
     end
 
     hand_type
   end
 
+
+  def consecutive_values?(symbols)
+    num_values = symbols.map { |symbol|  Card::VALUE_STRINGS[symbol] }
+    num_values.sort!
+    num_values[-1]-num_values[0] == 4
+  end
 end
