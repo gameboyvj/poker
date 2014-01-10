@@ -27,7 +27,9 @@ class Hand
     HAND_VALUES[hand_type]
   end
 
-
+  def beats?(other_hand)
+    hand_value > other_hand.hand_value
+  end
 
   private
   def determine_hand

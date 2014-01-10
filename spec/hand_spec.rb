@@ -65,4 +65,18 @@ describe Hand do
     end
   end
 
+  describe "#beats?" do
+    it "straight flush should beat a pair" do
+      hand = Hand.new(straight_flush_unordered)
+      other_hand = Hand.new(pair)
+      hand.beats?(other_hand).should eq(true)
+    end
+
+    it "pair should not beat a straight" do
+      hand = Hand.new(pair)
+      other_hand = Hand.new(straight)
+      hand.beats?(other_hand).should eq(false)
+    end
+  end
+
 end
