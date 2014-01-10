@@ -27,4 +27,8 @@ class Deck
     n.times {cards << @cards.pop}
     cards
   end
+
+  def return(cards)
+    @cards = cards + @cards
+  end
 end
