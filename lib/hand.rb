@@ -1,5 +1,4 @@
 require 'deck'
-require 'spec_helper'
 
 class Hand
   HAND_VALUES = {
