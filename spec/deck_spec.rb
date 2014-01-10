@@ -31,24 +31,24 @@ describe Deck do
     end
   end
 
-  describe "#return" do
+  describe "#return_cards" do
 
     it "returns the cards to the deck" do
       returned_cards = deck.take(2)
-      deck.return(returned_cards)
+      deck.return_cards(returned_cards)
       deck.cards.count.should eq(52)
     end
 
     it "doesn't duplicate cards" do
       returned_cards = deck.take(2)
-      deck.return(returned_cards)
+      deck.return_cards(returned_cards)
       deck.cards.uniq.count.should eq(52)
     end
 
     it "isn't the original deck" do
       original_deck = deck.cards
       returned_cards = deck.take(2)
-      deck.return(returned_cards)
+      deck.return_cards(returned_cards)
       original_deck.should_not eq(deck.cards)
     end
 

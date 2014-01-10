@@ -28,7 +28,7 @@ class Deck
     cards
   end
 
-  def return(cards)
+  def return_cards(cards)
     @cards = cards + @cards
   end
 end
