@@ -15,9 +15,11 @@ describe Player do
 
   describe "fold" do
     let(:deck) { double("deck") }
+    let(:hand) { double("hand", :cards => []) }
 
      it "should set player's hand to nil" do
-       player.hand = "something"
+       deck.should_receive(:return_cards).with([])
+       player.hand = hand
        player.fold(deck)
        player.hand.should eq(nil)
      end
