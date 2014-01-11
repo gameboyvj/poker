@@ -4,7 +4,7 @@ require_relative 'hand'
 require_relative 'player'
 
 class Game
-  attr_accessor :deck
+  attr_reader :deck
 
   def initialize(*players)
     @deck = Deck.new
@@ -15,6 +15,11 @@ class Game
 
   def run
     deal
+    
+    @players.each do |player|
+      puts "#{player.name}'s hand:" 
+      player.hand.display
+    end
     
     @players.each do |player|      
       player.get_bet

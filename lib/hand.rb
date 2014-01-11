@@ -18,6 +18,13 @@ class Hand
     @cards = cards
   end
 
+  def display
+    @cards.each do |card|
+      print "#{Card::SUIT_STRINGS[card.suit]} #{Card::VALUE_STRINGS[card.value]} "
+    end
+    puts
+  end
+  
   def hand_type
     determine_hand
   end

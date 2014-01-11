@@ -2,8 +2,10 @@ require_relative 'hand'
 
 class Player
   attr_accessor :hand, :pot
+  attr_reader :name
 
-  def initialize(money = 0)
+  def initialize(name, money = 0)
+    @name = name
     @hand = nil
     @money = money
     @folded = false
@@ -17,7 +19,8 @@ class Player
   def get_bet
     puts "What do you want to do? (fold, see or raise)."
     action = gets.chomp
-    fold(deck) if action == "fold"
+    
+    fold(@game.deck) if action == "fold"
     see if action == "see"
     raise_bet if action == "raise"
   end
@@ -37,11 +40,11 @@ class Player
 
   def fold(deck)
     @folded = true
-    return_cards(@hand.cards, deck)
+    return_cards(@hand.cards, @game.deck)
     @hand = nil
   end
 
-  def see
+  def seer
   end
 
   def raise_bet
