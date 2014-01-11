@@ -7,14 +7,19 @@ class Player
     @hand = nil
     @money = money
     @folded = false
+    @game = nil
+  end
+  
+  def join_game(game)
+    @game = game
   end
 
   def get_bet
-    puts "What do you want to do? (fold, see or raise)"
-    option = gets.chomp
-    fold(deck) if option == "fold"
-    see if option == "see"
-    rais if option == "raise"
+    puts "What do you want to do? (fold, see or raise)."
+    action = gets.chomp
+    fold(deck) if action == "fold"
+    see if action == "see"
+    raise_bet if action == "raise"
   end
 
   def prompt_switch
@@ -36,13 +41,13 @@ class Player
     @hand = nil
   end
 
-
   def see
   end
 
-  def rais
+  def raise_bet
     puts "How much?"
     amt = gets.chomp.to_i
+    @game.add_to_pot(amt)
   end
 
   def folded?

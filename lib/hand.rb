@@ -31,6 +31,7 @@ class Hand
   end
 
   private
+  
   def determine_hand
     hand_type = nil
 
@@ -63,7 +64,6 @@ class Hand
 
     hand_type
   end
-
 
   def consecutive_values?(symbols)
     num_values = symbols.map { |symbol|  Card::VALUE_STRINGS[symbol] }
