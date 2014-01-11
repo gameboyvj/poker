@@ -17,21 +17,26 @@ class Game
     deal
     
     @players.each do |player|
+      next if player.folded?
       puts "#{player.name}'s hand:" 
       player.hand.display
     end
-    
-    puts winner
-    
-    @players.each do |player|      
+
+    @players.each do |player|
+      next if player.folded?
+      puts "#{player.name}:"      
       player.get_bet
     end
     
     @players.each do |player|
+      next if player.folded?
+      puts "#{player.name}:"  
       player.prompt_switch
     end
     
     @players.each do |player|
+      next if player.folded?
+      puts "#{player.name}:"  
       player.get_bet
     end
     
