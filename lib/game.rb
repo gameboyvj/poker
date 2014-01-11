@@ -1,7 +1,7 @@
-require_relative 'card.rb'
-require_relative 'deck.rb'
-require_relative 'hand.rb'
-require_relative 'player.rb'
+require_relative 'card'
+require_relative 'deck'
+require_relative 'hand'
+require_relative 'player'
 
 class Game
   attr_accessor :deck
@@ -14,8 +14,9 @@ class Game
   end
 
   def run
+    deal
     
-    @players.each do |player|
+    @players.each do |player|      
       player.get_bet
     end
     
@@ -31,6 +32,9 @@ class Game
   end
 
   def deal
+    @players.each do |player|
+      player.hand = Hand.new(@deck.take(5))
+    end
   end
 
   def winner
@@ -48,6 +52,6 @@ end
 
 if __FILE__ == $PROGRAM_NAME
   h1 = Player.new("Mickey")
-  h2 = Player.new("Other Guy")
+  h2 = Player.new("Tommy Salami")
   Game.new(h1,h2).run
 end
