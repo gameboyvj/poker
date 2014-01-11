@@ -2,14 +2,15 @@ require_relative 'deck'
 
 class Hand
   HAND_VALUES = {
-    pair: 0,
-    two_pair: 1,
-    three_of_a_kind: 2,
-    straight: 3,
-    flush: 4,
-    full_house: 5,
-    four_of_a_kind: 6,
-    straight_flush: 7
+    high_card: 0,
+    pair: 1,
+    two_pair: 2,
+    three_of_a_kind: 3,
+    straight: 4,
+    flush: 5,
+    full_house: 6,
+    four_of_a_kind: 7,
+    straight_flush: 8
   }
 
   attr_accessor :cards
@@ -40,7 +41,7 @@ class Hand
   private
   
   def determine_hand
-    hand_type = nil
+    hand_type = :high_card
 
     value_hash = Hash.new {|h,k| h[k] = 0}
     suit_hash = Hash.new {|h,k| h[k] = 0}

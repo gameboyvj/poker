@@ -21,6 +21,8 @@ class Game
       player.hand.display
     end
     
+    puts winner
+    
     @players.each do |player|      
       player.get_bet
     end
@@ -43,6 +45,7 @@ class Game
   end
 
   def winner
+    @players[0].hand.beats?(@players[1].hand) ? @players[0].name : @players[1].name
   end
 
   
