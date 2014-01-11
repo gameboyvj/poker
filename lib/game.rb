@@ -40,7 +40,7 @@ class Game
       player.get_bet
     end
     
-    pick_winner
+    p winner
   end
 
   def deal
@@ -50,8 +50,25 @@ class Game
   end
 
   def winner
-    @players[0].hand.beats?(@players[1].hand) ? @players[0].name : @players[1].name
+    highest_hand = nil
+    winner = nil
+    
+    @players.each do |player|
+      unless player.folded?
+        highest_hand = player.hand
+        break
+      end
+    end
+    
+    @players.each do |player|
+      next if player.folded?
+      winner = player if player.hand.beats?(highest_hand)
+    end
+    
+    winner
   end
+  
+  
 
   
   private
