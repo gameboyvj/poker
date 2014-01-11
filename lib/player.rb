@@ -1,4 +1,4 @@
-require 'hand'
+require_relative 'hand'
 
 class Player
   attr_accessor :hand, :pot
