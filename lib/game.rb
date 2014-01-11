@@ -8,6 +8,7 @@ class Game
 
   def initialize(*players)
     @deck = Deck.new
+    "yag"
     @pot = 0
     @players = players
   end

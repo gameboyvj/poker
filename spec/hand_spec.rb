@@ -1,5 +1,5 @@
 require "hand"
-require "spec_helper"
+require_relative "spec_helper"
 
 describe Hand do
 

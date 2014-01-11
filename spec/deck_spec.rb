@@ -2,7 +2,7 @@ require 'deck'
 
 describe Deck do
   subject(:deck) {Deck.new}
-
+  
   it "contains 52 unique cards" do
     expect(deck.cards.uniq.count).to eq(52)
   end
